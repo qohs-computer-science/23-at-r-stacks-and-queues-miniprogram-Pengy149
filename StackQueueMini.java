@@ -22,7 +22,7 @@ import java.util.LinkedList;
 
 class StackQueueMini {
   public static void main(String[] args) {
-    Queue <Integer> firstQ = new LinkedList<Integer>(); 
+    Stack <Integer> firstStk = new Stack<Integer>(); 
     Stack <Integer> dupStk = new Stack<Integer>(); 
 		Scanner userIn = new Scanner(System.in);
     int userNum;
@@ -30,20 +30,26 @@ class StackQueueMini {
     for(int i = 0; i < 5; i++) {
       System.out.println("Enter a whole number: ");
       userNum = userIn.nextInt();
-      firstQ.add(userNum);
+      firstStk.add(userNum);
     } // end for loop  		
 
-    while(!firstQ.isEmpty())
+    while(!firstStk.isEmpty())
 		{
-			Integer temp = firstQ.remove();
+			Integer temp = firstStk.pop();
 			dupStk.add(temp);
       dupStk.add(temp);
 		} // end while loop 
 
-    System.out.println("Top of Stack");
-		while(!dupStk.isEmpty())
+    while(!dupStk.isEmpty())
 		{
 			Integer temp = dupStk.pop();
+			firstStk.add(temp);
+		} // end while loop 
+
+    System.out.println("Top of Stack");
+		while(!firstStk.isEmpty())
+		{
+			Integer temp = firstStk.pop();
 			System.out.println(temp);
 		} // end while loop 
 		System.out.println("Bottom of Stack");
